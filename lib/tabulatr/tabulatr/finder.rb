@@ -91,7 +91,7 @@ private
             rel = rel.where("#{n} #{@like} ?", "%#{v[:like]}%")
           elsif typ==:mongoid
             nn = n.split('.').last
-            rel = rel.where(nn => Regexp.new(v[:like]))
+            rel = rel.where(nn => Regexp.new(v[:like], true))
           else
             raise "Unknown db type '#{typ}'"
           end
